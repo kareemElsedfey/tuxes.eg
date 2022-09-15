@@ -1,0 +1,136 @@
+// Variables
+
+$dark: #222;
+$light: #ccc;
+$space: 20px;
+
+
+// General
+
+body {
+	background: $dark;
+	
+	* {
+		box-sizing: border-box;
+	}
+}
+
+ol {
+	list-style: none;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+	
+	&, &:visited {
+		color: $dark;
+	}
+}
+
+section {
+	
+	h1 {
+		color: $light;
+		margin-bottom: 30px;
+		font-size: 20px;
+	}
+}
+
+
+// Main
+
+main {
+	max-width: 900px;
+	margin: 0 auto;
+	padding: 40px $space;
+}
+
+
+// Slider cards
+
+.cards {
+	font-size: 0;
+	white-space: nowrap;
+}
+
+.card-outter {
+	display: inline-block;
+	padding-left: $space;
+}
+
+.card {
+	background: $light;
+	width: 250px;
+	padding: $space;
+	
+	.title {
+		font-size: 16px;
+		margin: 10px 0 6px;
+	}
+	
+	.description {
+		font-size: 12px;
+		margin: 0;
+	}
+}
+
+// Slider
+// Separate slider style from cards
+
+.slider-container {
+	position: relative;
+	overflow: hidden;
+	margin: 0 -20px;
+	
+	// Gradient fade
+	
+	&:before,
+	&:after {
+		position: absolute;
+		top: 0;
+		z-index: 1;
+		content: "";
+		display: block;
+		width: $space;
+		height: 100%;
+	}
+
+	&:before {
+		left: 0;
+		background: linear-gradient(90deg, $dark, transparent);
+	}
+
+	&:after {
+		right: 0;
+		background: linear-gradient(-90deg, $dark, transparent);
+	}
+}
+
+.slider {
+	transition: transform .2s ease-out;
+	
+	&.active {
+		transition: none;
+		cursor: grab;
+	}
+}
+
+.slider-indicator-bar {
+	position: relative;
+	height: 5px;
+	width: 100px;
+	margin: 30px auto 0;
+	background: lighten($dark, 6);
+	border-radius: 2px;
+
+	.slider-indicator {
+		position: absolute;
+		left: 0;
+		content: "";
+		height: 6px;
+		background-color: lighten($dark, 18);;
+		border-radius: 2px;
+		transition: left .2s ease-in-out;
+	}
+}
